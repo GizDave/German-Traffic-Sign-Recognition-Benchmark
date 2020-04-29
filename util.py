@@ -11,8 +11,8 @@ class tsDataset(data.dataset):
 		self.lbl, self.img = [], []
 
 		self.img_transform = transforms.Compose([
-            ...
-        ])
+			...
+		])
 
 	def __getitem__(self, index):
 		img = self.img_transform(self.img[index])
