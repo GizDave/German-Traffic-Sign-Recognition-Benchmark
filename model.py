@@ -163,12 +163,12 @@ def main():
     torch.manual_seed(0)
     model = Net() # instantiate model
     optimizer = optim.RMSprop(model.parameters(), lr=1e-5, alpha=0.99, eps=1e-08, weight_decay=0, momentum=0, centered=False) # optimizer
-    criterion = nn.CrossEntropyLoss(weight=None, size_average=None, ignore_index=-100, reduce=None, reduction='mean') # loss
+    criterion = nn.CrossEntropyLoss() # loss
 
     model.to(device)
     
     dataset = GTSRB('./GTSRB', transform=get_transform())
-    train_loader = DataLoader(dataset, batch_size=50, shuffle=False, sampler=None,
+    train_loader = data.DataLoader(dataset, batch_size=50, shuffle=False, sampler=None,
            batch_sampler=None, num_workers=3, collate_fn=None,
            pin_memory=False, drop_last=False, timeout=0,
            worker_init_fn=None)
