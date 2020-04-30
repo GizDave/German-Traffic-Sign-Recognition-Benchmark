@@ -161,9 +161,9 @@ def main():
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     torch.manual_seed(0)
+    model = Net() # instantiate model
     optimizer = optim.RMSprop(model.parameters(), lr=1e-5, alpha=0.99, eps=1e-08, weight_decay=0, momentum=0, centered=False) # optimizer
     criterion = nn.CrossEntropyLoss(weight=None, size_average=None, ignore_index=-100, reduce=None, reduction='mean') # loss
-    model = Net() # instantiate model
 
     model.to(device)
     
@@ -175,9 +175,12 @@ def main():
 
     accuracies = []
     for epoch in range(NUM_EPOCHS):
+        print('Epoch {}:'.format(epoch), end=' ')
         # training
+        print('train', end=' ')
         train_one_epoch(model, train_loader, optimizer, criterion, device)
         # evaluation
+        print('eval')
         accuracy = evaluate(model, train_loader, device)
         accuracies.append(accuracy)
 
