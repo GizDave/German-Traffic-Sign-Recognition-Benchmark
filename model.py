@@ -161,15 +161,15 @@ def main():
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     torch.manual_seed(0)
-    optimizer = optim.RMSprop(params, lr=1e-5, alpha=0.99, eps=1e-08, weight_decay=0, momentum=0, centered=False) # optimizer
+    optimizer = optim.RMSprop(model.parameters(), lr=1e-5, alpha=0.99, eps=1e-08, weight_decay=0, momentum=0, centered=False) # optimizer
     criterion = nn.CrossEntropyLoss(weight=None, size_average=None, ignore_index=-100, reduce=None, reduction='mean') # loss
     model = Net() # instantiate model
 
     model.to(device)
     
     dataset = GTSRB('./GTSRB', transform=get_transform())
-    train_loader = DataLoader(dataset, batch_size=1, shuffle=False, sampler=None,
-           batch_sampler=None, num_workers=0, collate_fn=None,
+    train_loader = DataLoader(dataset, batch_size=50, shuffle=False, sampler=None,
+           batch_sampler=None, num_workers=3, collate_fn=None,
            pin_memory=False, drop_last=False, timeout=0,
            worker_init_fn=None)
 
