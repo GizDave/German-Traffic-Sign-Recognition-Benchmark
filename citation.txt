@@ -1,2 +1,0 @@
-URL: https://www.sciencedirect.com/science/article/pii/S0893608018300054
-REFERENCE: CNN with 3 Spatial Transformers, DeepKnowledge Seville, Álvaro Arcos-García and Juan A. Alvarez-García and Luis M. Soria-Morillo, Neural Networks
